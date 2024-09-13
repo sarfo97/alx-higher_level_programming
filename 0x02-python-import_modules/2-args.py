@@ -1,13 +1,17 @@
 #!/usr/bin/python3
+import sys
 
 if __name__ == "__main__":
-    from sys import argv
-    length = len(argv) - 1
-    if length == 1:
-        print("1 argument:")
-    elif length == 0:
-        print("0 arguments.")
+    argv = sys.argv[1:]  # Get all arguments except the script name
+    argc = len(argv)  # Number of arguments
+
+    if argc == 0:
+        print(f"{argc} arguments.")
+    elif argc == 1:
+        print(f"{argc} argument:")
     else:
-        print("{} arguments:".format(length))
-    for i in range(length):
-        print("{}: {}".format(i + 1, argv[i + 1]))
+        print(f"{argc} arguments:")
+
+    for i, arg in enumerate(argv, 1):
+        print(f"{i}: {arg}")
+
